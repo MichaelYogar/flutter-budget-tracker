@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late ItemViewModel itemViewModel;
+  int _currentIndex = 0;
 
   @override
   void initState() {
@@ -77,23 +78,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                       ),
-                      Container(
-                        color: Colors.grey[900],
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 20.0, bottom: 20.0, left: 20.0, right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const <Widget>[
-                              Text(
-                                'Budget Tracker Notion',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              )
-                            ],
-                          ),
-                        ),
-                      )
+                      // Container(
+                      //   color: Colors.grey[900],
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.only(
+                      //         top: 20.0, bottom: 20.0, left: 20.0, right: 20.0),
+                      //     child: Row(
+                      //       mainAxisAlignment: MainAxisAlignment.center,
+                      //       children: const <Widget>[
+                      //         Text(
+                      //           'Budget Tracker Notion',
+                      //           style: TextStyle(
+                      //               color: Colors.white, fontSize: 20),
+                      //         )
+                      //       ],
+                      //     ),
+                      //   ),
+                      // )
                     ],
                   ),
                 ),
@@ -105,6 +106,26 @@ class _HomeScreenState extends State<HomeScreen> {
             return const Center(child: CircularProgressIndicator());
           },
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
+        type: BottomNavigationBarType.fixed,
+        onTap: (index) => setState(() {
+          _currentIndex = index;
+        }),
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        currentIndex: _currentIndex,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.addchart),
+            label: 'Bar Chart',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.ac_unit_outlined),
+            label: 'Pie Chart',
+          ),
+        ],
       ),
     );
   }
