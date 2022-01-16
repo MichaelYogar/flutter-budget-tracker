@@ -15,12 +15,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Budget Tracker',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
